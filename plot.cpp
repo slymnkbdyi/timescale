@@ -8,10 +8,17 @@
 #include <qwt_plot_grid.h>
 #include <qwt_plot_layout.h>
 #include <qwt_plot_picker.h>
+#include <qwt_plot_canvas.h>
+#include <QFont>
 Plot::Plot( QWidget *parent ):
     QwtPlot( parent )
 {
-      this->resize(200,200);
+
+QFont serifFont("Times", 6);
+
+
+    this->setMaximumHeight(50);
+
     //çercevedeki etikleteri gösterilmesini saglar
     setAutoFillBackground( true );
 
@@ -21,11 +28,13 @@ Plot::Plot( QWidget *parent ):
     setCanvasBackground( Qt::white);
 
 
+
     plotLayout()->setAlignCanvasToScales(true );
 
     //
-//    initAxis( QwtPlot::xTop, "", Qt::LocalTime );
-//    initAxis( QwtPlot::xBottom,  "Local Time", Qt::LocalTime);
+    initAxis( QwtPlot::xTop, "", Qt::LocalTime );
+    initAxis( QwtPlot::xBottom,  "Local Time", Qt::LocalTime);
+
 
 
      // canvas kaydırılabilir hale getiriliyor
@@ -38,9 +47,8 @@ Plot::Plot( QWidget *parent ):
     picker->setTrackerMode( QwtPlotPicker::AlwaysOn );
     for ( int axis = 0; axis < QwtPlot::axisCnt; axis++ )
     {
-        const bool on = axis == QwtPlot::xTop||
-            axis == QwtPlot::xBottom;
-
+        const bool on = axis == QwtPlot::xBottom;
+            this->setAxisFont(axis,serifFont);
         enableAxis( axis, on );
         panner->setAxisEnabled( axis, on );
         magnifier->setAxisEnabled( axis, on );
@@ -61,7 +69,7 @@ Plot::Plot( QWidget *parent ):
 void Plot::initAxis( int axis, const QString& title, Qt::TimeSpec timeSpec )
 {
     //eksene baslık ekleniyor
-    setAxisTitle( axis, title );
+   // setAxisTitle( axis, title );
 
     QwtDateScaleDraw *scaleDraw = new QwtDateScaleDraw( timeSpec );
     QwtDateScaleEngine *scaleEngine = new QwtDateScaleEngine( timeSpec );

@@ -720,7 +720,8 @@ release/plot.o: plot.cpp plot.h \
 		C:/Qwt-6.1.3/include/qwt_plot_layout.h \
 		C:/Qwt-6.1.3/include/qwt_plot_picker.h \
 		C:/Qwt-6.1.3/include/qwt_picker.h \
-		C:/Qwt-6.1.3/include/qwt_event_pattern.h
+		C:/Qwt-6.1.3/include/qwt_event_pattern.h \
+		C:/Qwt-6.1.3/include/qwt_plot_canvas.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\plot.o plot.cpp
 
 release/mainwindow.o: mainwindow.cpp plot.h \

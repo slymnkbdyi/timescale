@@ -4,10 +4,13 @@
 #include <qwt_date.h>
 #include <qwt_scale_widget.h>
 #include <qlayout.h>
-
+#include <qwt_plot_canvas.h>
 MainWindow::MainWindow( QWidget *parent ):
     QMainWindow( parent )
 {
+
+
+
 
     // default degerlerin tanımlandığı yer   TARİH ve ARALIK Boşlugu vs..
     Settings settings;
@@ -43,9 +46,10 @@ MainWindow::MainWindow( QWidget *parent ):
 
      QVBoxLayout *chart_layout =new QVBoxLayout();
      chart_layout->addWidget(d_plot);
-//     chart_layout->addWidget(d_plot1);
-//     chart_layout->addWidget(d_plot2);
-//     chart_layout->addWidget(d_plot3);
+     chart_layout->addWidget(d_plot1);
+     chart_layout->addWidget(d_plot2);
+     chart_layout->addWidget(d_plot3);
+
 
 
    //    layout->addWidget(d_plot);
